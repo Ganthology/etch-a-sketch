@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html>
+    <link href='style.css' rel="stylesheet">
     <body>
         <header>
             <!--Title-->
             <h1>Etch-a-Sketch</h1>
         </header>
-        <div>
-            <div>
+        <div class="gridContainer">
+            <!--Grid Canvas-->
+        </div>
+            <div class=control>
                 <!--Control Section, New Button Clear Button,Range button -->
-                <div>Control Clear New</div>
+                <div>
+                    <label for="quantity">Type A Value For Grid Size:</label>
+                    <input type="number" id='quantity' name="quantity" />
+                    <button class="reset">RESET</button>
+                </div>
                 <!--Color Section-->
                 <div>Color Section</div>
             </div>
-            <div>
-                <!--Grid Canvas-->
-            </div>
-        </div>
+
     </body>
+    <script src="script.js"></script>
 </html>

@@ -1,0 +1,25 @@
+:root{
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+}
+.square{
+    background-color: white;
+    border: 1px solid black;
+}
+.color{
+    background-color: cornflowerblue;
+    border: 1px solid lightblue;
+}
+.control{
+    float: left;
+}
+.gridContainer{
+    display: grid;
+    width: 40vw;
+    height: 40vw;
+    grid-template-columns: repeat(16, 2fr);
+    grid-template-rows: repeat(16, 2fr);
+    border: 2px solid grey;
+    border-radius: 5px;
+    float: right;
+}
