@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
     <link href='style.css' rel="stylesheet">
     <body>
         <header>
@@ -14,12 +16,13 @@
                 <!--Control Section, New Button Clear Button,Range button -->
                 <div>
                     <label for="quantity">Choose A Value For Grid Size:</label>
-                    <input type="range" id='quantity' name="quantity" min="8" max="80" oninput="document.getElementById('quantityLabel').innerHTML = this.value;"><label for="quantity" id='quantityLabel'>36</label>
+                    <input class='slider' type="range" id='quantity' name="quantity" min="8" max="64" value="16" oninput="document.getElementById('quantityLabel').innerHTML = this.value;"><label for="quantity" id='quantityLabel'>16</label>
                     <button class="reset">RESET</button>
                 </div>
                 <!--Color Section-->
                 <div id='color'>
                     <input type="radio" class='color-buttons' id="black" value="black" name="color" checked><label for="black">Black</label>
+                    <input type="radio" class='color-buttons' id="skyblue" value="skyblue" name="color" checked><label for="skyblue">Skyblue</label>
                     <input type="radio" class="color-buttons" id="random" value="random" name="color"><label for="random">Random</label>
                     <input type="radio" class="color-buttons" id='eraser' value="eraser" name="color"><label for="eraser">Eraser</label>
                     <input type="radio" class="color-buttons" value="user" name="color"><label for="color-picker">Choose your own</label><input type="color" id="color-picker">
