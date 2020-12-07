@@ -1,9 +1,13 @@
 :root{
     font-size: 1.5rem;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Nerko One', cursive;
+    background-color: azure;
 }
 header{
     text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 0;
+    color: goldenrod;
 }
 .main{
     display: flex;
@@ -12,30 +16,59 @@ header{
 }
 .control{
     margin-top: 20px;
+    font-size: 1.2rem;
+    color: goldenrod;
+    text-align: center;
+}
+.slider{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100px;
+    height: 20px;
+    outline: none;
+    background: wheat;
+    border-radius: 20px;
+}
+.slider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: goldenrod;
+    cursor: pointer;
+    border-radius: 20px;
+}
+button{
+    font-family: 'Nerko One', cursive;
+    background-color: lemonchiffon;
+    font-size: 1.3rem;
+    color: darkgoldenrod;
+    padding: 5px 15px;
+    border: 0;
+    border-radius: 20px;
+}
+#color{
+    font-size: 1.3rem;
+    padding: 10px 0px;
+}
+#color label{
+    padding: 0 5px;
 }
 .container{
     display: grid;
-    width: 50vw;
-    height: 50vw;
+    margin-top: 0%;
+    width: 40vw;
+    height: 40vw;
     grid-template-columns: repeat(16, 2fr);
     grid-template-rows: repeat(16, 2fr);
-    outline: 2px solid black;
+    outline: 2px solid skyblue;
 }
 .grid{
-    outline: 1px solid grey;
-}
-.black{
-
-}
-.random{
-
-}
-.eraser{
-    
+    outline: 1px solid lightblue;
 }
 @media screen and (max-width: 1200px){
     .container{
-        width: 70vw;
-        height: 70vw;
+        width: 60vw;
+        height: 60vw;
     }
 }
