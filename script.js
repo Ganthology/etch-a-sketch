@@ -8,43 +8,54 @@ const colorButtons = document.querySelectorAll('.color-buttons');
 const resetButton = document.querySelector('.reset');
 const colorPicked = document.querySelector('#color-picker');
 let slider = document.querySelector('#quantity');
-let colorChosen = 'black';
+let color = 'black';
+let colorChosen;
+
 
 // create grids and append in container
-createGrid = () => {
-  for (let i = 0; i < 256; i++) {
-    const div = document.createElement("div");
-    div.classList.add("square");
-    grid.appendChild(div);
+function createGrid(numberPerSide) {
+  removeCells();
+  container.style.gridTemplateColumns = (`repeat(${numberPerSide}, 2fr)`);
+  container.style.gridTemplateRows = (`repeat(${numberPerSide}, 2fr)`);
+  let gridArea = numberPerSide * numberPerSide;
+  for (let i = 0; i < gridArea; i++){
+    let grid = document.createElement('div');
+    grid.classList.add('grid');
+    grid.style = 'background-color: white';
+    container.appendChild(grid);
   }
-};
+  let grids = container.querySelectorAll('div');
+  grids.forEach(grid => grid.addEventListener('mouseover', colorGrid));
+}
 
-updateGrid = () => {
-  grid.innerHTML = "";
-  grid.style.setProperty(
-    "grid-template-columns",
-    `repeat(${userInput.value}, 2fr)`
-  );
-  grid.style.setProperty(
-    "grid-template-rows",
-    `repeat(${userInput.value}, 2fr)`
-  );
-  for (let i = 0; i < userInput.value * userInput.value; i++) {
-    const div = document.createElement("div");
-    div.classList.add("square");
-    grid.appendChild(div);
+// remove grids, if container is not empty, removeChild()
+function removeCells() {
+  while(container.firstChild) {
+    container.removeChild(container.firstChild);
   }
-  console.log(userInput.value);
-};
+}
 
-const square = document.querySelector("div");
-square.addEventListener("mouseover", function(event) {
-  event.target.classList.replace("square", colorChosen);
-});
+// reset function
+function resetAll() {
+  let grids = container.querySelectorAll('div');
+  grids.forEach(grid => grid.style.backgroundColor = 'white');
+}
+
+// random color function
+function randomColor() {
+  let red = Math.floor(Math.random()*255);
+  let green = Math.floor(Math.random()*255);
+  let blue = Math.floor(Math.random()*255);
+  let alpha = (0.5 + Math.random()*0.5);
+  return [red, green, blue, alpha];
+}
+
+function colorPicker(event) {
+  color = event.target.value;
+}
 
 // update value when a color button is clicked
 function changeColor(event) {
-  console.log(event.target.value)
   switch(event.target.value) {
     case 'black':
       colorChosen = 'black';
@@ -64,53 +75,31 @@ function changeColor(event) {
   }
 }
 
-// random color function
-function randomColor() {
-  let red = Math.floor(Math.random()*255);
-  let green = Math.floor(Math.random()*255);
-  let blue = Math.floor(Math.random()*255);
-  let alpha = (0.5 + Math.random()*0.5);
-  return [red, green, blue, alpha];
-}
-
-function colorPicker(event) {
-  colorChosen = event.target.value;
-}
-
-
-
 // onmouseover event class
 function colorGrid() {
   switch (colorChosen) {
     case 'black':
       this.style.backgroundColor = 'black';
+      this.style.outline = 'none';
       break;
     case 'random':
-      this.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);;
+      this.style.backgroundColor = "#"+Math.floor(Math.random()*16777215).toString(16);
       break;
     case 'eraser':
       this.style.backgroundColor = 'white';
       break;
     case 'user':
-      this.style.backgroundColor = colorPicked.target.value;
+      this.style.backgroundColor = color;
+      break;
     default:
-      this.style.backgroundColor = 'black';
+      this.style.backgroundColor = color;
       break;
   }
 }
 
-userInput.addEventListener("change", updateGrid);
+createGrid(36);
 
-resetButton.addEventListener("click", function() {
-  grid.innerHTML = "";
-  userInput.value = "";
-  grid.style.setProperty("grid-template-columns", `repeat(16, 2fr)`);
-  grid.style.setProperty("grid-template-rows", `repeat(16, 2fr)`);
-  createGrid();
-});
-
+resetButton.addEventListener('click', resetAll);
 colorButtons.forEach(colorButton => colorButton.addEventListener('click', changeColor));
-
-createGrid();
 colorPicked.addEventListener('change', colorPicker, false);
 colorPicked.addEventListener('input', colorPicker, false);
