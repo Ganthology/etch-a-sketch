@@ -14,16 +14,15 @@
                 <!--Control Section, New Button Clear Button,Range button -->
                 <div>
                     <label for="quantity">Choose A Value For Grid Size:</label>
-                    <input type="range" id='quantity' name="quantity" min="8" max="64" oninput="document.getElementById('quantityLabel').innerHTML = this.value;"><label for="quantity" id='quantityLabel'>36</label>
+                    <input type="range" id='quantity' name="quantity" min="8" max="80" oninput="document.getElementById('quantityLabel').innerHTML = this.value;"><label for="quantity" id='quantityLabel'>36</label>
                     <button class="reset">RESET</button>
                 </div>
                 <!--Color Section-->
                 <div id='color'>
-                    <input type="radio" id="black" value="black" name="color" checked><label for="black">Black</label>
-                    <input type="radio" id="grayscale" value="red" name="color"><label for="grayscale">Grayscale</label>
-                    <input type="radio" id="random" value="random" name="color"><label for="random">Random</label>
-                    <input type="radio" id="user" value="user" name="color"><label for="color-picker">Choose your own</label><input type="color" id="color-picker">
-                    <input type="radio" id='eraser' value="eraser" name="color"><label for="eraser">Eraser</label>
+                    <input type="radio" class='color-buttons' id="black" value="black" name="color" checked><label for="black">Black</label>
+                    <input type="radio" class="color-buttons" id="random" value="random" name="color"><label for="random">Random</label>
+                    <input type="radio" class="color-buttons" id='eraser' value="eraser" name="color"><label for="eraser">Eraser</label>
+                    <input type="radio" class="color-buttons" id="color-picker" value="user" name="color"><label for="color-picker">Choose your own</label><input type="color" id="color-picker">
                 </div>
             </div>
         </div>

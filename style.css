@@ -1,25 +1,41 @@
 :root{
-    font-size: large;
+    font-size: 1.5rem;
     font-family: 'Courier New', Courier, monospace;
 }
-.square{
-    background-color: white;
-    border: 1px solid black;
+header{
+    text-align: center;
 }
-.color{
-    background-color: cornflowerblue;
-    border: 1px solid lightblue;
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .control{
-    float: left;
+    margin-top: 20px;
 }
-.gridContainer{
+.container{
     display: grid;
-    width: 40vw;
-    height: 40vw;
+    width: 50vw;
+    height: 50vw;
     grid-template-columns: repeat(16, 2fr);
     grid-template-rows: repeat(16, 2fr);
-    border: 2px solid grey;
-    border-radius: 5px;
-    float: right;
+    outline: 2px solid black;
+}
+.grid{
+    outline: 1px solid grey;
+}
+.black{
+
+}
+.random{
+
+}
+.eraser{
+    
+}
+@media screen and (max-width: 1200px){
+    .container{
+        width: 70vw;
+        height: 70vw;
+    }
 }
