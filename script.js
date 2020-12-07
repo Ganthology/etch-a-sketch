@@ -2,11 +2,11 @@
 // slider input to control the grid size
 // color button to control the color variable
 // add mouseover event to grid, color grid depends on the color variable
-
 const container = document.querySelector('.container');
 const colorButtons = document.querySelectorAll('.color-buttons');
 const resetButton = document.querySelector('.reset');
 const colorPicked = document.querySelector('#color-picker');
+const userInput = document.getElementById("quantity");
 let slider = document.querySelector('#quantity');
 let color = 'black';
 let colorChosen;
@@ -39,17 +39,10 @@ function removeCells() {
 function resetAll() {
   let grids = container.querySelectorAll('div');
   grids.forEach(grid => grid.style.backgroundColor = 'white');
+  createGrid(slider.value);
 }
 
-// random color function
-function randomColor() {
-  let red = Math.floor(Math.random()*255);
-  let green = Math.floor(Math.random()*255);
-  let blue = Math.floor(Math.random()*255);
-  let alpha = (0.5 + Math.random()*0.5);
-  return [red, green, blue, alpha];
-}
-
+// get value from color picker
 function colorPicker(event) {
   color = event.target.value;
 }
@@ -59,6 +52,9 @@ function changeColor(event) {
   switch(event.target.value) {
     case 'black':
       colorChosen = 'black';
+      break;
+    case 'skyblue':
+      colorChosen = 'skyblue';
       break;
     case 'random':
       colorChosen = 'random';
@@ -82,24 +78,33 @@ function colorGrid() {
       this.style.backgroundColor = 'black';
       this.style.outline = 'none';
       break;
+    case 'skyblue':
+      this.style.backgroundColor = 'skyblue';
+      this.style.outline = 'none';
+      break;
     case 'random':
       this.style.backgroundColor = "#"+Math.floor(Math.random()*16777215).toString(16);
+      this.style.outline = 'none';
       break;
     case 'eraser':
       this.style.backgroundColor = 'white';
+      this.style.outline = '1px solid lightblue';
       break;
     case 'user':
       this.style.backgroundColor = color;
+      this.style.outline = 'none';
       break;
     default:
       this.style.backgroundColor = color;
+      this.style.outline = 'none';
       break;
   }
 }
 
-createGrid(36);
+createGrid(16);
 
 resetButton.addEventListener('click', resetAll);
+userInput.addEventListener("change", resetAll);
 colorButtons.forEach(colorButton => colorButton.addEventListener('click', changeColor));
 colorPicked.addEventListener('change', colorPicker, false);
 colorPicked.addEventListener('input', colorPicker, false);
